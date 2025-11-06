@@ -1,5 +1,5 @@
 # BotGege
-A Simple WhatsApp bot by Astroo, made with javascript
+A Simple WhatsApp bot by Astroo, made with javascript and baileys
 
 ```
 how to install
