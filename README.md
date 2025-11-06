@@ -16,5 +16,5 @@ npm start
 ```
 
 ##thanks to:
-*cited (sepuh njir)\n
-*@adiwajshing for baileys
+-cited (sepuh njir)\n
+-[@adiwajshing] (https://github.com/adiwajshing) for [baileys] (https://github.com/WhiskeySockets/Baileys)
