@@ -15,6 +15,6 @@ npm i
 npm start
 ```
 
-##thanks to:
-- cited (sepuh njir)\n
-- [@adiwajshing] (https://github.com/adiwajshing) for [baileys] (https://github.com/WhiskeySockets/Baileys)
+## thanks to:
+- cited (sepuh njir)
+- [@adiwajshing](https://github.com/adiwajshing) for [baileys](https://github.com/WhiskeySockets/Baileys)
