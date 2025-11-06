@@ -13,3 +13,8 @@ npm i
 
 4. start bot
 npm start
+```
+
+thanks to:
+*cited (sepuh njir)
+*@adiwajshing for baileys
