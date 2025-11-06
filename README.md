@@ -1,7 +1,9 @@
 # BotGege
 A Simple WhatsApp bot by Astroo, made with javascript
 
-```how to install
+```
+how to install
+
 1. copy the repo
 git clone https://github.com/astroohere/BotGege.git
 
