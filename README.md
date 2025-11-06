@@ -15,6 +15,6 @@ npm i
 npm start
 ```
 
-thanks to:
-*cited (sepuh njir)
+##thanks to:
+*cited (sepuh njir)\n
 *@adiwajshing for baileys
