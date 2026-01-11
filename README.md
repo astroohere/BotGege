@@ -4,6 +4,9 @@ Bot WhatsApp simpel, dibuat dengan javascript dan baileys
 
 A Simple WhatsApp bot by Astroo, made with javascript and baileys
 
+
+Bot ini punya karakter sendiri namanya Rin agar bot terasa lebih hidup
+
 ```
 how to install
 
