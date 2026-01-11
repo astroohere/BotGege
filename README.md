@@ -1,12 +1,9 @@
 # BotGege
 
-Bot WhatsApp simpel, dibuat dengan javascript dan baileys.
-
-Bot ini punya karakter sendiri namanya Rin
+Bot WhatsApp simpel, dibuat dengan javascript dan baileys. Bot ini punya karakter sendiri namanya Rin.
 
 
-A Simple WhatsApp bot by Astroo, made with javascript and baileys.
-This bot has its own character named Rin
+A Simple WhatsApp bot by Astroo, made with javascript and baileys. This bot has its own character named Rin.
 
 
 
