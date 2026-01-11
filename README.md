@@ -22,6 +22,9 @@ npm i
 4. start bot
 npm start
 ```
+Harap diingat bot ini masih dalam tahap pengembangan beta, jadi mungkin kamu akan menemukan bug, jika terjadi crash cukup direstart/start ulang (terutama saat baru disambungkan)
+
+(kalau nemu bug itu namanya fitur :V)
 
 ## thanks to:
 
