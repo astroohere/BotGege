@@ -3,7 +3,7 @@
 Bot WhatsApp simpel, dibuat dengan javascript dan baileys. Bot ini punya karakter sendiri namanya Rin.
 
 
-A Simple WhatsApp bot by Astroo, made with javascript and baileys. This bot has its own character named Rin.
+eng: A Simple WhatsApp bot by Astroo, made with javascript and baileys. This bot has its own character named Rin.
 
 
 
@@ -24,12 +24,11 @@ npm i
 npm start
 ```
 Harap diingat bot ini masih dalam tahap pengembangan beta, jadi mungkin kamu akan menemukan bug, jika terjadi crash cukup direstart/start ulang (terutama saat baru disambungkan).
-
 (kalau nemu bug itu namanya fitur :V)
 
 
-Please keep in mind that this bot is still in beta development, so you may encounter bugs. If a crash occurs, simply restart it (especially after a new connection).
 
+eng: Please keep in mind that this bot is still in beta development, so you may encounter bugs. If a crash occurs, simply restart it (especially after a new connection).
 (If you encounter a bug, that's called feature :V)
 
 ## thanks to:
