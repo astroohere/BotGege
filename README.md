@@ -1,5 +1,6 @@
 # BotGege
 
+Bot WhatsApp simpel, dibuat dengan javascript dan baileys
 A Simple WhatsApp bot by Astroo, made with javascript and baileys
 
 ```
