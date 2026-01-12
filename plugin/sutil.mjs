@@ -63,29 +63,31 @@ export default async (soket) => {
 
           // Cek apakah pesan yang dibalas adalah media
           const quotedMessage = contextInfo.quotedMessage;
-          if (
-            (quotedMessage.imageMessage && isiPesan === ".s") ||
-            (quotedMessage.imageMessage && isiPesan.includes("stiker"))
-          ) {
-            console.log("[s] Memproses gambar...");
-            console.warn(contextInfo);
+          if (contextInfo.quotedMessage) {
+            if (
+              (quotedMessage.imageMessage && isiPesan === ".s") ||
+              (quotedMessage.imageMessage && isiPesan.includes("stiker"))
+            ) {
+              console.log("[s] Memproses gambar...");
+              console.warn(contextInfo);
 
-            const buffer = await downloadMediaMessage(
-              { key: contextInfo.stanzaId, message: quotedMessage },
-              "buffer"
-            );
+              const buffer = await downloadMediaMessage(
+                { key: contextInfo.stanzaId, message: quotedMessage },
+                "buffer"
+              );
 
-            const konfigurasiStiker = new Sticker(buffer, {
-              pack: "", // The pack name
-              author: "", // The author name
-              type: StickerTypes.FULL, // The sticker type
-              categories: [], // The sticker category
-              id: "12345", // The sticker id
-              quality: 100, // The quality of the output file
-            });
+              const konfigurasiStiker = new Sticker(buffer, {
+                pack: "", // The pack name
+                author: "", // The author name
+                type: StickerTypes.FULL, // The sticker type
+                categories: [], // The sticker category
+                id: "12345", // The sticker id
+                quality: 100, // The quality of the output file
+              });
 
-            console.log(`[s] Gambar berhasil diproses!`);
-            soket.sendMessage(kontak, await konfigurasiStiker.toMessage());
+              console.log(`[s] Gambar berhasil diproses!`);
+              soket.sendMessage(kontak, await konfigurasiStiker.toMessage());
+            }
           }
         }
       }

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default async (soket) => {
   const version =
-    "`igdl v0.1`\nplugin igdl berfungsi untuk mengunduh reels dari instagram";
+    "`igdl v0.2`\nplugin igdl berfungsi untuk mengunduh reels dari instagram";
 
   async function getDirectLink() {
     soket.ev.on("messages.upsert", async ({ messages }) => {
@@ -47,15 +47,25 @@ export default async (soket) => {
 
     const buffer = Buffer.from(resource.data);
 
-    await soket
-      .sendMessage(kontak, {
-        video: buffer,
-        caption: "nih",
-      })
+    const mimeType = resource.headers["content-type"];
 
-      .catch((error) => {
-        console.error("yah error jing:", error);
-      });
+    if (!mimeType) return;
+
+    try {
+      if (mimeType === "image/jpeg") {
+        await soket.sendMessage(kontak, {
+          image: buffer,
+          caption: "nih",
+        });
+      } else {
+        await soket.sendMessage(kontak, {
+          video: buffer,
+          caption: "nih",
+        });
+      }
+    } catch (error) {
+      console.error("yah error jing:", error);
+    }
   }
 
   getDirectLink();
