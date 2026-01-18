@@ -31,6 +31,11 @@ Harap diingat bot ini masih dalam tahap pengembangan beta, jadi mungkin kamu aka
 eng: Please keep in mind that this bot is still in beta development, so you may encounter bugs. If a crash occurs, simply restart it (especially after a new connection).
 (If you encounter a bug, that's called feature :V)
 
+## FAQ:
+<details><summary><strong>Will my number get banned if i use this?</strong></summary>  
+- It should be safe if the bot is not used for spam, I have used it during the development period and nothing happened, everything is safe!
+</details>
+
 ## thanks to:
 
 - cited (sepuh njir)
