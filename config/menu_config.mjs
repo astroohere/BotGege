@@ -1,4 +1,4 @@
-import { menuHit } from "../menu.mjs";
+import { menuHit } from "../plugin/menu.mjs";
 
 const menuContents = () => {
   return (
@@ -18,6 +18,6 @@ const menuContents = () => {
   );
 };
 
-const about = `>*botgege 0.7-beta* by Astroo\n`;
+const about = `> *botgege 0.7-beta* by Astroo\n`;
 
 export { menuContents, about };

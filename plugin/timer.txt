@@ -1,0 +1,65 @@
+const version =
+  "`timer v0.1`\nplugin ini berfungsi untuk menyetel timer dengan WhatsApp\n*catatan: jika bot crash/direstart maka timer yang sedang berjalan akan hilang*";
+
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "fs";
+import { join } from "path";
+
+export default function setup(soket) {
+  const timerDatabaseDir = "./database/timer";
+  const timerDatabase = "timer.json";
+  const timerDatabasePath = join(timerDatabaseDir, timerDatabase);
+
+  if (!existsSync(timerDatabaseDir)) {
+    mkdirSync(timerDatabaseDir);
+  }
+  if (!existsSync(timerDatabasePath)) {
+    writeFileSync(timerDatabasePath);
+  }
+
+  setTimer(soket);
+}
+
+export function setTimer(soket) {
+  soket.ev.on("messages.upsert", async ({ messages }) => {
+    const pesan = messages[0];
+    const kontak = pesan.key.remoteJid;
+    const isiPesan =
+      pesan.message?.conversation ||
+      pesan.message?.extendedTextMessage?.text ||
+      pesan.message?.imageMessage?.caption ||
+      "";
+
+    let user = [];
+    let timer = [];
+
+    if (isiPesan === ".timer -v") {
+      await soket.sendMessage(kontak, { text: version });
+    }
+
+    if (isiPesan === ".timer") {
+      await soket.sendMessage(kontak, {
+        text: "mau set timer berapa lama?\n*contoh: .timer set 1 jam* (untuk set timer durasi 1 jam)\n\n`format:`\n`-jam`\n`-menit`\n`-detik`",
+      });
+    }
+
+    if (isiPesan.includes(".timer set")) {
+      let parts = isiPesan.split(" ");
+    }
+
+    //   if (
+    //     isiPesan.includes("rin") &&
+    //     isiPesan.includes("timer") &&
+    //     isiPesan.includes("detik")
+    //   ) {
+    //     await soket.sendMessage(kontak, {
+    //       text: "masih belum jadi :V",
+    //     });
+    //   }
+  });
+}

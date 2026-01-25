@@ -78,12 +78,25 @@ export default async (soket) => {
         currentBotUptime = botUptimeFormat(process.uptime());
       }, 1000);
 
+      const botUptime = "sekitar `" + botUptimeFormat(process.uptime()) + "`";
+
       if (isiPesan === ".info -v") {
         await soket.sendMessage(kontak, { text: version });
       }
       if (isiPesan === ".info") {
         await soket.sendMessage(kontak, {
           text: info,
+        });
+      }
+
+      if (isiPesan.includes("info") && isiPesan.includes("rin")) {
+        await soket.sendMessage(kontak, {
+          text: info,
+        });
+      }
+      if (isiPesan.includes("uptime") && isiPesan.includes("rin")) {
+        await soket.sendMessage(kontak, {
+          text: botUptime,
         });
       }
     });

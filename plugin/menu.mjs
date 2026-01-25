@@ -1,6 +1,6 @@
 // menu.mjs
 const version = "`menu v1`";
-import { menuContents, about } from "./config/menu_config.mjs";
+import { menuContents, about } from "../config/menu_config.mjs";
 
 let menuHit = 0;
 
