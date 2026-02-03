@@ -37,7 +37,7 @@ async function sambungkanKeWhatsApp() {
     if (connection === "close") {
       console.log("[Rin] Koneksi terputus, menyambungkan kembali...");
       console.log(lastDisconnect);
-      setTimeout(() => sambungkanKeWhatsApp(), 1000);
+      setTimeout(() => sambungkanKeWhatsApp(), 1000); jembod
     }
     if (connection === "open") {
       console.warn("[Rin] botgege 0.7 is under beta development!");
