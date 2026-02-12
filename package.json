@@ -6,6 +6,7 @@
     "axios": "^1.13.2",
     "fs": "^0.0.1-security",
     "genius-lyrics": "^4.4.7",
+    "git-clone": "^0.2.0",
     "instagram-url-direct": "^2.0.7",
     "path": "^0.12.7",
     "pino": "^10.1.0",
