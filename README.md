@@ -38,5 +38,5 @@ eng: Please keep in mind that this bot is still in beta development, so you may 
 
 ## thanks to:
 
-- cited (sepuh njir)
 - [@adiwajshing](https://github.com/adiwajshing) for [baileys](https://github.com/WhiskeySockets/Baileys)
+- cited (sepuh)
