@@ -1,9 +1,9 @@
 # BotGege
 
-Bot WhatsApp simpel, dibuat dengan javascript dan baileys. Bot ini punya karakter sendiri namanya Rin.
+Bot WhatsApp simpel, dibuat dengan javascript dan baileys. Panggil saja dia rin
 
 
-eng: A Simple WhatsApp bot by Astroo, made with javascript and baileys. This bot has its own character named Rin.
+eng: A Simple WhatsApp bot by Astroo, made with javascript and baileys. Just called her rin
 
 
 
@@ -23,13 +23,11 @@ npm i
 4. start bot
 npm start
 ```
-Harap diingat bot ini masih dalam tahap pengembangan beta, jadi mungkin kamu akan menemukan bug, jika terjadi crash cukup direstart/start ulang (terutama saat baru disambungkan).
-(kalau nemu bug itu namanya fitur :V)
+Harap diingat bot ini masih dalam tahap pengembangan beta, jadi mungkin kamu akan menemukan bug, jika terjadi crash cukup direstart (terutama saat baru disambungkan).
 
 
 
 eng: Please keep in mind that this bot is still in beta development, so you may encounter bugs. If a crash occurs, simply restart it (especially after a new connection).
-(If you encounter a bug, that's called feature :V)
 
 ## FAQ:
 <details><summary><strong>Will my number get banned if i use this?</strong></summary>  
