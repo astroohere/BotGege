@@ -1,66 +1,64 @@
-import axios from "axios";
-import { writeFile } from "fs/promises";
-
 const version =
-  "`udl v0.1`\nPlugin downloader universal yang dibangun menggunakan ytdlp";
+  "`udl v0.1\nUDL (Universal Downloader) is a powerful downloader tool for WhatsApp powered by popular YT-DLP tool!`";
+import { spawn } from "child_process";
 
-export default function main(soket) {
-  soket.ev.on("messages.upsert", async ({ messages }) => {
-    const pesan = messages[0];
-    const kontak = pesan.key.remoteJid;
-    const isiPesan =
-      pesan.message?.conversation ||
-      pesan.message?.extendedTextMessage?.text ||
-      pesan.message?.imageMessage?.caption ||
-      "";
+export default async (soket) => {
+  async function downloadVideo(kontak, url) {
+    try {
+      const ytdlp = spawn("yt-dlp", ["-f", "b[ext=mp4]/b", "-o", "-", url]);
 
-    if (isiPesan === ".udl -v") {
-      await soket.sendMessage(kontak, { text: version });
-    }
-
-    if (isiPesan.startsWith(".ytdl")) {
       await soket.sendMessage(kontak, {
-        react: {
-          text: "⏳",
-          key: pesan.key,
+        video: {
+          stream: ytdlp.stdout,
         },
       });
-      youtubeDownloader(soket, pesan, isiPesan, kontak);
+    } catch (error) {
+      console.error("Error:", error);
     }
-  });
-}
-
-async function youtubeDownloader(soket, pesan, isiPesan, kontak) {
-  const URL = isiPesan.split(" ");
-  const API_ENDPOINT = `https://api.astr.my.id/download`;
-
-  try {
-    const response = await axios.get(API_ENDPOINT, {
-      params: {
-        link_youtube: URL[1], // clean link
-      },
-      responseType: "stream",
-    });
-
-    await writeFile(response.data)
-
-    await soket.sendMessage(kontak, {
-      video: { stream: response.data },
-      caption: "nih",
-    });
-    await soket.sendMessage(kontak, {
-      react: {
-        text: "✅",
-        key: pesan.key,
-      },
-    });
-  } catch (error) {
-    console.log(`[Rin:udl-ytdl] Terjadi error di: ${error}`);
-    await soket.sendMessage(kontak, {
-      react: {
-        text: "❌",
-        key: pesan.key,
-      },
-    });
   }
-}
+
+  const messagesUpsertHandler = async ({ messages }) => {
+    try {
+      if (!messages || !messages.length) return; // return if the message is empty or self
+
+      const pesan = messages[0];
+      const kontak = pesan.key.remoteJid;
+      const isiPesan =
+        pesan.message?.conversation ||
+        pesan.message?.extendedTextMessage?.text ||
+        pesan.message?.imageMessage?.caption ||
+        "";
+
+      if (isiPesan === ".udl") {
+        await soket.sendMessage(kontak, {
+          text: "mana linknya?\ncontoh: .udl https://youtu.be/dQw4w9WgXcQ",
+        });
+      }
+
+      if (isiPesan.startsWith(".udl")) {
+        const cleanURL = isiPesan.slice(5);
+
+        await soket.sendMessage(kontak, {
+          react: {
+            text: "⏳",
+            key: pesan.key,
+          },
+        });
+        await downloadVideo(kontak, cleanURL);
+        await soket.sendMessage(kontak, {
+          react: {
+            text: "",
+            key: pesan.key,
+          },
+        });
+      }
+    } catch (error) {
+      console.log(`[Saki] terjadi error di: ${error}`);
+    }
+  };
+
+  if (!soket._ytdlListenerRegistered) {
+    soket.ev.on("messages.upsert", messagesUpsertHandler);
+    soket._ytdlListenerRegistered = true;
+  }
+};
