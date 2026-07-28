@@ -1,6 +1,7 @@
-export default async (soket) => {
-  const version = "elaina v1.1";
+// elaina 0.1-beta
+const version = "`elaina v0.1-beta`\nidk.";
 
+export default async (soket) => {
   async function elaina() {
     soket.ev.on("messages.upsert", async ({ messages }) => {
       const pesan = messages[0];
@@ -24,7 +25,7 @@ export default async (soket) => {
         await soket.sendMessage(kontak, { text: version });
       }
 
-      const elaina = `*100 alasan elaina merupakan istri DIMAS*\n\
+      const elaina = `*100 alasan elaina adalah my mine gweh*\n\
 1. Cerdas.\n\
 2. Humoris.\n\
 3. Berwawasan luas.\n\

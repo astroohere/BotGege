@@ -1,15 +1,7 @@
-export default async (soket) => {
-  /**
-   * Listener untuk messages.upsert yang lebih aman dan rapih.
-   * Perbaikan yang dilakukan:
-   * - Cek keberadaan pesan sebelum mengakses propertinya (optional chaining)
-   * - Normalisasi isi pesan (toLowerCase + trim)
-   * - Ganti rangkaian `if` dengan `switch` untuk readability
-   * - Bungkus handler dengan try/catch agar error tidak mempropagasi
-   * - Hindari mendaftarkan listener berkali-kali dengan flag pada objek soket
-   */
+// chat 0.5
+const version = "`chat v0.5`\nBasic interaction with Saki.";
 
-  // Handler terpisah supaya mudah dihapus/di-test jika perlu
+export default async (soket) => {
   const messagesUpsertHandler = async ({ messages }) => {
     try {
       if (!messages || !messages.length) return;
@@ -35,58 +27,27 @@ export default async (soket) => {
       const quotedMessage =
         pesan.message?.extendedTextMessage?.contextInfo?.quotedMessage;
 
-      // if (
-      //   (isiPesan.includes("rin") && isiPesan.includes("siapa")) ||
-      //   (isiPesan.includes("rin") &&
-      //     isiPesan.includes("siapa") &&
-      //     isiPesan.includes("lu")) ||
-      //   (isiPesan.includes("rin") &&
-      //     isiPesan.includes("apa") &&
-      //     isiPesan.includes("lu")) ||
-      //   (isiPesan.includes("rin") &&
-      //     isiPesan.includes("apa") &&
-      //     isiPesan.includes("kamu"))
-      // ) {
-      //   await soket.sendMessage(kontak, { text: "aku rin" });
-      // }
+      const responsesList = [
+        "iya?",
+        "iyaa?",
+        "hm?",
+        "hmm?",
+        "apa?",
+        "apaa?",
+        "apaaa?",
+        "ya?",
+        "yaa?",
+        "apaan",
+        "ape",
+        "?",
+      ];
+      const randomIndex = Math.floor(Math.random() * responsesList.length);
 
-      // if (
-      //   (isiPesan.includes("rin") &&
-      //     isiPesan.includes("apa") &&
-      //     isiPesan.includes("lu")) ||
-      //   (isiPesan.includes("rin") &&
-      //     isiPesan.includes("apa") &&
-      //     isiPesan.includes("kamu"))
-      // ) {
-      //   await soket.sendMessage(kontak, { text: "aku karakter gak nyata si" });
-      // }
-
-      // if (isiPesan.includes("sekarang") && isiPesan.includes("hari")) {
-      //   await soket.sendMessage(kontak, { text: "minggu bang" });
-      // }
-
-      // if (isiPesan.includes("besok") && isiPesan.includes("hari")) {
-      //   await soket.sendMessage(kontak, { text: "senin" });
-      // }
-
-      // if (isiPesan.includes("lusa") && isiPesan.includes("hari")) {
-      //   await soket.sendMessage(kontak, { text: "selasa" });
-      // }
-
-      switch (isiPesan) {
-        case "rin":
-          await soket.sendMessage(kontak, { text: "hm?" });
-          break;
-        case "hi rin":
-          await soket.sendMessage(kontak, { text: "iya?" });
-          break;
-        case "rinn":
-          await soket.sendMessage(kontak, { text: "apa?" });
-          break;
-
-        default:
-          // Tidak ada aksi untuk pesan lain
-          break;
+      if (isiPesan === ".chat -v") {
+        await soket.sendMessage(kontak, { text: version });
+      }
+      if (isiPesan.includes("saki")) {
+        await soket.sendMessage(kontak, { text: responsesList[randomIndex] });
       }
     } catch (err) {
       console.error("Error in messages.upsert handler:", err);

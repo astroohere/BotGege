@@ -19,7 +19,7 @@ function listPluginFiles() {
     .map((file) => join(__dirname, "plugin", file));
 }
 
-async function sambungkanKeWhatsApp() {
+async function connectToWhatsApp() {
   const { version } = await fetchLatestBaileysVersion();
   const { saveCreds, state } = await useMultiFileAuthState("sesi");
   const soket = makeWASocket({
@@ -31,17 +31,17 @@ async function sambungkanKeWhatsApp() {
   soket.ev.on("connection.update", async (update) => {
     const { connection, lastDisconnect, qr } = update;
     if (qr) {
-      console.log("[Rin] QR Code diterima, silakan scan:");
+      console.log("[Saki] Pairing QRCode:");
       QRCode.generate(qr, { small: true });
     }
     if (connection === "close") {
-      console.log("[Rin] Koneksi terputus, menyambungkan kembali...");
+      console.log("[Saki] Koneksi terputus, menyambungkan kembali...");
       console.log(lastDisconnect);
-      setTimeout(() => sambungkanKeWhatsApp(), 1000); 
+      setTimeout(() => connectToWhatsApp(), 1000);
     }
     if (connection === "open") {
-      console.warn("[Rin] botgege 0.7 is under beta development!");
-      console.log("[Rin] Koneksi tersambung!");
+      console.warn("[Saki] botgege 0.7 is under beta development");
+      console.log("[Saki] Connected!");
     }
   });
 
@@ -54,10 +54,10 @@ async function sambungkanKeWhatsApp() {
       const plugin = mod.default ?? mod;
       if (typeof plugin === "function") {
         await plugin(soket);
-        console.log(`[Rin] plugin dimuat: ${pluginPath}`);
+        console.log(`[Saki] ${pluginPath} plugin loaded`);
       } else {
         console.warn(
-          `[Rin] Module tidak mengekspor fungsi default: ${pluginPath}`
+          `[Saki] ${pluginPath} plugin does not export default functions.`,
         );
       }
     } catch (err) {
@@ -68,4 +68,4 @@ async function sambungkanKeWhatsApp() {
   soket.ev.on("creds.update", saveCreds);
 }
 
-sambungkanKeWhatsApp();
+connectToWhatsApp();

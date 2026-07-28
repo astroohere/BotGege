@@ -1,6 +1,8 @@
+// udl 0.1-beta
 const version =
-  "`udl v0.1\nUDL (Universal Downloader) is a powerful downloader tool for WhatsApp powered by popular YT-DLP tool!`";
+  "`udl v0.1-beta`\nUDL (Universal Downloader) is a powerful downloader tool for WhatsApp powered by popular YT-DLP tool!`";
 import { spawn } from "child_process";
+import { text } from "stream/consumers";
 
 export default async (soket) => {
   async function downloadVideo(kontak, url) {
@@ -28,6 +30,13 @@ export default async (soket) => {
         pesan.message?.extendedTextMessage?.text ||
         pesan.message?.imageMessage?.caption ||
         "";
+
+      if (isiPesan === ".udl -v") {
+        await soket.sendMessage(kontak, {
+          text: version,
+        });
+        return;
+      }
 
       if (isiPesan === ".udl") {
         await soket.sendMessage(kontak, {

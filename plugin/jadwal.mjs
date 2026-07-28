@@ -1,8 +1,8 @@
-import { SongsClient } from "genius-lyrics";
+// jadwal 0.1-beta
+const version =
+  "`jadwal v0.1-beta`\nPlugin untuk mencatat dan menampilkan jadwal.";
 
 export default async (soket) => {
-  const version = "jadwal v0.1";
-
   async function jadwal() {
     soket.ev.on("messages.upsert", async ({ messages }) => {
       const pesan = messages[0];

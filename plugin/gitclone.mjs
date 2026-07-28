@@ -1,5 +1,6 @@
-// git-clone v0.1
-const version = "`git-clone v0,1`\nPlugin untuk clone repository GitHub";
+// gitclone 0.1-beta
+const version =
+  "`gitclone v0.1-beta`\nPlugin untuk mengunduh repository GitHub";
 import axios from "axios";
 
 export default async function main(soket) {
@@ -12,11 +13,11 @@ export default async function main(soket) {
       pesan.message?.imageMessage?.caption ||
       "";
 
-    if (isiPesan === ".git-clone -v") {
+    if (isiPesan === ".gitclone -v") {
       await soket.sendMessage(kontak, { text: version });
     }
 
-    if (isiPesan.startsWith(".git-clone")) {
+    if (isiPesan.startsWith(".gitclone")) {
       await soket.sendMessage(kontak, {
         react: {
           text: "⏳",

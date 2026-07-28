@@ -1,5 +1,6 @@
-// info.mjs
-const version = "`info v1`";
+// info 0.1-beta
+const version =
+  "`info v0.1-beta`\nBotGege system monitor! (currently doesnt work with pterodactyl panel)";
 import os from "os";
 
 export default async (soket) => {

@@ -1,5 +1,5 @@
-// menu.mjs
-const version = "`menu v1`";
+// menu 1
+const version = "`menu v1`\nBotGege main menu.";
 import { menuContents, about } from "../config/menu_config.mjs";
 
 let menuHit = 0;

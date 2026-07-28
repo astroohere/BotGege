@@ -1,6 +1,6 @@
-// sutil 1.5
+// sutil 1.3
 const version =
-  "`sutil v1.5`\nsticker utility atau disingkat sutil adalah utilitas untuk membuat stiker dan dapat mengonversi stiker menjadi gambar, dan sekarang dapat digunakan untuk mengkoleksi stiker!";
+  "`sutil v1.3`\nsticker utility atau disingkat sutil adalah utilitas untuk membuat stiker dan dapat mengonversi stiker menjadi gambar, dan sekarang dapat digunakan untuk mengkoleksi stiker!";
 import { Sticker, StickerTypes } from "wa-sticker-formatter";
 import { downloadMediaMessage } from "@whiskeysockets/baileys";
 
@@ -56,7 +56,7 @@ async function useCaption(soket, pesan, kontak) {
   });
 
   soket.sendMessage(kontak, await konfigurasiStiker.toMessage()); // Send sticker
-  console.log("[Rin:sutil] Berhasil membuat stiker!");
+  console.log("[Saki:sutil] Berhasil membuat stiker!");
 }
 async function useReply(soket, kontak, isiPesan, contextInfo) {
   // Create sticker using replied image
@@ -88,13 +88,13 @@ async function useReply(soket, kontak, isiPesan, contextInfo) {
       console.log(`[s] Gambar berhasil diproses!`);
       soket.sendMessage(kontak, await konfigurasiStiker.toMessage());
     } else {
-      console.log("[Rin:sutil] Pesan yang direply bukan gambar.");
+      console.log("[Saki:sutil] Pesan yang direply bukan gambar.");
       await soket.sendMessage(kontak, {
         text: "itu bukan gambar",
       });
     }
   } else {
-    console.log("[Rin:sutil] Tidak ada pesan yang direply.");
+    console.log("[Saki:sutil] Tidak ada pesan yang direply.");
     await soket.sendMessage(kontak, {
       text: "mana gambarnya",
     });
@@ -115,20 +115,20 @@ async function toImg(soket, pesan, isiPesan, kontak) {
         "buffer",
       ); // Unduh media dari pesan yang dibalas
 
-      console.log(`[Rin:sutil] gambar berhasil diproses!`);
+      console.log(`[Saki:sutil] gambar berhasil diproses!`);
 
       await soket.sendMessage(kontak, {
         image: stream,
         caption: "nih",
       });
     } else {
-      console.log("[Rin:sutil] Pesan yang direply bukan stiker.");
+      console.log("[Saki:sutil] Pesan yang direply bukan stiker.");
       await soket.sendMessage(kontak, {
         text: "itu bukan stiker",
       });
     }
   } else {
-    console.log("[Rin:sutil] Tidak ada pesan yang direply.");
+    console.log("[Saki:sutil] Tidak ada pesan yang direply.");
     await soket.sendMessage(kontak, {
       text: "reply stikernya",
     });
